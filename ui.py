@@ -20,6 +20,9 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         MainWindow.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -114,9 +117,11 @@ class Ui_MainWindow(object):
         self.btnGenerieren.setText(_translate("MainWindow", "Neu Generieren"))
         self.menuGenerator.setTitle(_translate("MainWindow", "Generator"))
         self.actionGenerate.setText(_translate("MainWindow", "Generate"))
+        self.actionGenerate.setShortcut(_translate("MainWindow", "Ctrl+Return"))
         self.actionQuit.setText(_translate("MainWindow", "Beenden"))
         self.actionInfo.setText(_translate("MainWindow", "Info"))
         self.actionBeenden.setText(_translate("MainWindow", "Beenden"))
+        self.actionBeenden.setShortcut(_translate("MainWindow", "Ctrl+Q"))
 
 
 if __name__ == "__main__":

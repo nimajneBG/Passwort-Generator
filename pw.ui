@@ -30,6 +30,10 @@
   <property name="windowTitle">
    <string>Passwort Generator</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>logo.png</normaloff>logo.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
@@ -213,6 +217,9 @@
    <property name="text">
     <string>Generate</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Return</string>
+   </property>
   </action>
   <action name="actionQuit">
    <property name="text">
@@ -227,6 +234,9 @@
   <action name="actionBeenden">
    <property name="text">
     <string>Beenden</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
  </widget>
