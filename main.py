@@ -42,10 +42,19 @@ class PW(Ui_MainWindow):
         else:
             self.errorOut('Keine Zeichengruppe ausgewählt')
             return False
+
+    def randomPasswort(self):
+        for i in range(self.LAENGE):
+            self.passwort += random.choice(self.LISTE)
     
     def generate(self):
+        self.passwort = ''
+        self.LAENGE = self.sliderLaenge.value()
+
         if self.createList():
-            print(self.LISTE)
+            self.randomPasswort()
+            self.pwOutput.setText(self.passwort)
+            
 
     def copyPW(self):
         print('Passwort kopieren')
