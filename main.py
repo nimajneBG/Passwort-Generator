@@ -14,9 +14,38 @@ class PW(Ui_MainWindow):
             'Sonderzeichen' : '^°!"§$%&/()=?`´*-_.:,;<>|@€²³{[]}#+~',
             'Umlaute' : 'üäöÜÄÖß'
         }
+
+    def errorOut(self, errorMessage: str):
+        print(errorMessage)
+
+    def createList(self):
+        self.LISTE = ''
+
+        if self.checkGrossbuchstaben.isChecked() or self.checkKleinbuchstaben.isChecked() or self.checkUmlaute.isChecked() or self.checkZahlen.isChecked() or self.checkSonderzeichen.isChecked():
+            if self.checkGrossbuchstaben.isChecked():
+                self.LISTE += self.ZEICHEN.get('Grossbuchstaben')
+
+            if self.checkKleinbuchstaben.isChecked():
+                self.LISTE += self.ZEICHEN.get('Kleinbuchstaben')
+
+            if self.checkUmlaute.isChecked():
+                self.LISTE += self.ZEICHEN.get('Umlaute')
+
+            if self.checkZahlen.isChecked():
+                self.LISTE += self.ZEICHEN.get('Zahlen')
+
+            if self.checkSonderzeichen.isChecked():
+                self.LISTE += self.ZEICHEN.get('Sonderzeichen')
+
+            return True
+        
+        else:
+            self.errorOut('Keine Zeichengruppe ausgewählt')
+            return False
     
     def generate(self):
-        print('Generieren')
+        if self.createList():
+            print(self.LISTE)
 
     def copyPW(self):
         print('Passwort kopieren')
