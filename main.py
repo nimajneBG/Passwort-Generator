@@ -1,6 +1,7 @@
 from ui import *
 import sys
 import random
+from PyQt5.Qt import QApplication
 
 class PW(Ui_MainWindow):
     def __init__(self):
@@ -57,13 +58,26 @@ class PW(Ui_MainWindow):
             
 
     def copyPW(self):
-        print('Passwort kopieren')
+        QApplication.clipboard().setText(self.passwort)
 
     def displaySliderValue(self):
         self.labelAnzeigeLaenge.setText(str(self.sliderLaenge.value()))
 
     def info(self):
-        pass
+        TEXT = '''<b>Passwort Generator</b> <br>
+        &copy; 2020 by Benjamin Grau <br> <br>
+        Ein einfaches in Python geschriebenes Programm mit GUI zum generieren von zufälligen Passwörtern. <br>
+        <a href="https://greygit.de/benjamin/Passwort-Generator">Code</a>
+        '''
+        popup = QtWidgets.QMessageBox(self.MainWindow)
+        popup.setWindowTitle('Passwort Generator Info')
+        popup.setText(TEXT)
+        popup.setIcon(QtWidgets.QMessageBox.Information)
+        # Schriftgröße
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        popup.setFont(font)
+        popup.exec_()
 
     # Signale usw. verbinden
     def connect(self):
@@ -81,11 +95,11 @@ class PW(Ui_MainWindow):
 
     def run(self):
         app = QtWidgets.QApplication(sys.argv)
-        MainWindow = QtWidgets.QMainWindow()
-        self.setupUi(MainWindow)
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.setupUi(self.MainWindow)
         self.connect()
         self.generate()
-        MainWindow.show()
+        self.MainWindow.show()
         sys.exit(app.exec_())
 
 
