@@ -116,7 +116,7 @@ class Ui_MainWindow(object):
         self.labelAnzeigeLaenge.setText(_translate("MainWindow", "8"))
         self.btnGenerieren.setText(_translate("MainWindow", "Neu Generieren"))
         self.menuGenerator.setTitle(_translate("MainWindow", "Generator"))
-        self.actionGenerate.setText(_translate("MainWindow", "Generate"))
+        self.actionGenerate.setText(_translate("MainWindow", "Generieren"))
         self.actionGenerate.setShortcut(_translate("MainWindow", "Ctrl+Return"))
         self.actionQuit.setText(_translate("MainWindow", "Beenden"))
         self.actionInfo.setText(_translate("MainWindow", "Info"))

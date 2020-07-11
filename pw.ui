@@ -215,7 +215,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionGenerate">
    <property name="text">
-    <string>Generate</string>
+    <string>Generieren</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Return</string>
