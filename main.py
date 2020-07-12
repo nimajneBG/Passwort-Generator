@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from ui import *
 import sys
 import random
@@ -15,9 +16,18 @@ class PW(Ui_MainWindow):
             'Sonderzeichen' : '^°!"§$%&/()=?`´*-_.:,;<>|@€²³{[]}#+~',
             'Umlaute' : 'üäöÜÄÖß'
         }
+        self.font = QtGui.QFont()
+        self.font.setPointSize(12)
 
     def errorOut(self, errorMessage: str):
-        print(errorMessage)
+        """Erstellt ein Popup mit eier der Fehlermeldung `errorMessage`,
+         einem Warn/Fehler Icon und einem OK-Button zum schließen"""
+        popup = QtWidgets.QMessageBox(self.MainWindow)
+        popup.setWindowTitle('Fehler')
+        popup.setText('<b>Fehler:</b> {}'.format(errorMessage))
+        popup.setIcon(QtWidgets.QMessageBox.Warning)
+        popup.setFont(self.font)
+        popup.exec_()
 
     def createList(self):
         self.LISTE = ''
@@ -52,10 +62,12 @@ class PW(Ui_MainWindow):
         self.passwort = ''
         self.LAENGE = self.sliderLaenge.value()
 
-        if self.createList():
-            self.randomPasswort()
-            self.pwOutput.setText(self.passwort)
-            
+        if self.LAENGE > 0:
+            if self.createList():
+                self.randomPasswort()
+                self.pwOutput.setText(self.passwort)
+        else:
+            self.errorOut('Das Passwort muss mindestens ein Zeichen lang sein')
 
     def copyPW(self):
         QApplication.clipboard().setText(self.passwort)
@@ -74,9 +86,7 @@ class PW(Ui_MainWindow):
         popup.setText(TEXT)
         popup.setIcon(QtWidgets.QMessageBox.Information)
         # Schriftgröße
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        popup.setFont(font)
+        popup.setFont(self.font)
         popup.exec_()
 
     # Signale usw. verbinden
