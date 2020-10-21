@@ -2,6 +2,7 @@
 from ui import *
 import sys
 import random
+from os import path
 from PyQt5.Qt import QApplication
 
 class PW(Ui_MainWindow):
@@ -18,6 +19,7 @@ class PW(Ui_MainWindow):
         }
         self.font = QtGui.QFont()
         self.font.setPointSize(12)
+        self.icon = QtGui.QIcon(path.dirname(path.realpath(__file__)) + path.sep + 'pw.min.svg')
 
     def errorOut(self, errorMessage: str):
         """Erstellt ein Popup mit eier der Fehlermeldung `errorMessage`,
@@ -107,6 +109,8 @@ class PW(Ui_MainWindow):
         app = QtWidgets.QApplication(sys.argv)
         self.MainWindow = QtWidgets.QMainWindow()
         self.setupUi(self.MainWindow)
+        # Set Icon
+        app.setWindowIcon(self.icon)
         self.connect()
         self.generate()
         self.MainWindow.show()
