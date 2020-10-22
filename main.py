@@ -78,14 +78,14 @@ class PW(Ui_MainWindow):
         self.labelAnzeigeLaenge.setText(str(self.sliderLaenge.value()))
 
     def info(self):
-        TEXT = '''<b>Passwort Generator</b> <br>
-        &copy; 2020 by Benjamin Grau <br> <br>
+        TEXT = '''&copy; 2020 by Benjamin Grau <br> <br>
         Ein einfaches in Python geschriebenes Programm mit GUI zum generieren von zufälligen Passwörtern. <br>
         <a href="https://github.com/nimajneBG/Passwort-Generator">Code</a>
         '''
         popup = QtWidgets.QMessageBox(self.MainWindow)
         popup.setWindowTitle('Passwort Generator Info')
-        popup.setText(TEXT)
+        popup.setText('<b>Passwort Generator</b>')
+        popup.setInformativeText(TEXT)
         popup.setIcon(QtWidgets.QMessageBox.Information)
         # Schriftgröße
         popup.setFont(self.font)
